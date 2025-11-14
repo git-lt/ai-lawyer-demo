@@ -1,1 +1,0 @@
-import{i as r,j as a}from"./index-CbOchtVq.js";const g=r("user",()=>{const e=a(!1),o=a(null),s=a(20);return{isAuthenticated:e,userProfile:o,complaintProgress:s,login:async(t,i)=>{e.value=!0,o.value={id:"user-1",name:"用户",phone:t,complaintHistory:[]}},logout:()=>{e.value=!1,o.value=null,s.value=0},updateProgress:t=>{s.value=Math.min(100,Math.max(0,t))}}});export{g as u};
