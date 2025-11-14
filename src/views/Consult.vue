@@ -44,12 +44,7 @@
         
         <!-- Mermaid 流程图 -->
         <div class="mermaid-container">
-          <div class="mermaid" ref="mermaidRef">
-graph TD
-    A[咨询] --> B[12315投诉]
-    B --> C[申请支付令]
-    C --> D[法院起诉]
-          </div>
+          <div class="mermaid" ref="mermaidRef"></div>
         </div>
         
         <!-- 法律依据 -->
@@ -125,15 +120,19 @@ import { nextTick } from 'vue'
 const consultStore = useConsultStore()
 const mermaidRef = ref<HTMLElement>()
 
+// 定义流程图内容 - 使用正确的换行符
+const flowchartDefinition = `graph TD
+    A[咨询] --> B[12315投诉]
+    B --> C[申请支付令]
+    C --> D[法院起诉]`
+
 onMounted(async () => {
   try {
     // 动态导入 mermaid
     const mermaid = await import('mermaid')
     console.log('Mermaid loaded:', mermaid)
     
-    // 获取 mermaid 容器的文本内容
-    const mermaidText = mermaidRef.value?.textContent?.trim() || ''
-    console.log('Mermaid diagram text:', mermaidText)
+    console.log('Flowchart definition:', flowchartDefinition)
     
     // 初始化 mermaid
     mermaid.default.initialize({ 
@@ -145,9 +144,9 @@ onMounted(async () => {
     // 等待 DOM 更新
     await nextTick()
     
-    // 清空容器并重新渲染
-    if (mermaidRef.value && mermaidText) {
-      mermaidRef.value.textContent = mermaidText
+    // 设置流程图内容并渲染
+    if (mermaidRef.value) {
+      mermaidRef.value.textContent = flowchartDefinition
       await mermaid.default.run({
         nodes: [mermaidRef.value]
       })
