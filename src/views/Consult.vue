@@ -45,10 +45,10 @@
         <!-- Mermaid 流程图 -->
         <div class="mermaid-container">
           <div class="mermaid" ref="mermaidRef">
-            graph TD
-            A[咨询]-->B[12315投诉]
-            B-->C[申请支付令]
-            C-->D[法院起诉]
+graph TD
+    A[咨询] --> B[12315投诉]
+    B --> C[申请支付令]
+    C --> D[法院起诉]
           </div>
         </div>
         
@@ -131,9 +131,13 @@ onMounted(async () => {
     const mermaid = await import('mermaid')
     console.log('Mermaid loaded:', mermaid)
     
+    // 获取 mermaid 容器的文本内容
+    const mermaidText = mermaidRef.value?.textContent?.trim() || ''
+    console.log('Mermaid diagram text:', mermaidText)
+    
     // 初始化 mermaid
     mermaid.default.initialize({ 
-      startOnLoad: true, 
+      startOnLoad: false, // 手动控制渲染
       theme: 'default',
       securityLevel: 'loose'
     })
@@ -141,9 +145,12 @@ onMounted(async () => {
     // 等待 DOM 更新
     await nextTick()
     
-    // 渲染流程图
-    if (mermaidRef.value) {
-      mermaid.default.init(undefined, mermaidRef.value)
+    // 清空容器并重新渲染
+    if (mermaidRef.value && mermaidText) {
+      mermaidRef.value.textContent = mermaidText
+      await mermaid.default.run({
+        nodes: [mermaidRef.value]
+      })
       console.log('Mermaid flowchart rendered successfully')
     }
   } catch (error) {
