@@ -120,15 +120,34 @@ import { ref, onMounted } from 'vue'
 import AppHeader from '@/components/AppHeader.vue'
 import FooterTabs from '@/components/FooterTabs.vue'
 import { useConsultStore } from '@/stores/consult'
+import { nextTick } from 'vue'
 
 const consultStore = useConsultStore()
 const mermaidRef = ref<HTMLElement>()
 
-onMounted(() => {
-  // 初始化 Mermaid
-  if (window.mermaid) {
-    window.mermaid.initialize({ startOnLoad: true, theme: 'default' })
-    window.mermaid.init(undefined, mermaidRef.value)
+onMounted(async () => {
+  try {
+    // 动态导入 mermaid
+    const mermaid = await import('mermaid')
+    console.log('Mermaid loaded:', mermaid)
+    
+    // 初始化 mermaid
+    mermaid.default.initialize({ 
+      startOnLoad: true, 
+      theme: 'default',
+      securityLevel: 'loose'
+    })
+    
+    // 等待 DOM 更新
+    await nextTick()
+    
+    // 渲染流程图
+    if (mermaidRef.value) {
+      mermaid.default.init(undefined, mermaidRef.value)
+      console.log('Mermaid flowchart rendered successfully')
+    }
+  } catch (error) {
+    console.error('Failed to load or initialize mermaid:', error)
   }
 })
 </script>
