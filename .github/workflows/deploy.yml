@@ -33,6 +33,12 @@ jobs:
       - name: Build project
         run: npm run build:ci
         
+      - name: Verify build output
+        run: |
+          echo "🔍 检查构建输出的路径配置..."
+          grep -o 'src="/ai-lawyer-demo/[^"]*"' dist/index.html || echo "⚠️ 警告：未找到包含 /ai-lawyer-demo/ 的路径"
+          echo "✅ 构建验证完成"
+        
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
