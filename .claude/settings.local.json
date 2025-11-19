@@ -4,7 +4,8 @@
       "Bash(git add:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nfeat: 优化首页UI设计和配色方案\n\n- 重新设计Hero区域，使用现代海蓝渐变背景替换原来的紫色渐变\n- 优化按钮配色，使用金色渐变确保与背景形成良好对比\n- 统一极简四步中的序号颜色，从多种渐变为统一的青蓝渐变\n- 重新设计统计卡片背景色，使用与主色调协调的配色\n- 修复首页内容被底部tabbar遮挡的问题，增加底部间距\n- 优化状态标签和步骤时间组件的颜色统一性\n- 添加现代化的进度条样式和动画效果\n- 增加响应式设计，适配不同屏幕尺寸\n\n配色方案特点：\n- 主色调：海蓝色系（#0891b2 → #164e63）\n- 强调色：金色系（#fbbf24 → #d97706）用于按钮\n- 辅助色：青色系用于状态元素\n- 整体配色专业、现代，符合维权助手的品牌调性\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git push:*)",
-      "Bash(git remote set-url:*)"
+      "Bash(git remote set-url:*)",
+      "Bash(git commit -m:*)"
     ],
     "deny": [],
     "ask": []
