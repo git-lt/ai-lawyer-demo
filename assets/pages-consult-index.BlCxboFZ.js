@@ -1,4 +1,4 @@
-import{d as N,h as b,c as r,w as t,a as V,b as l,e as a,i as Q,S,j as y,l as i,F as g,k as h,u as f,n as x,f as n,t as o,g as A,m as F,I as z,A as E,p as L,_ as M}from"./index-BfSLqPRE.js";const P=N({__name:"index",setup(U){const c=b([{id:1,type:"ai",content:`您好！我是您的AI维权助手 🤖
+import{d as N,h as b,c as r,w as t,a as V,b as l,e as a,i as Q,S,j as y,l as i,F as g,k as h,u as f,n as x,f as n,t as o,g as A,m as F,I as z,A as E,p as L,_ as M}from"./index-IzvQ6HSa.js";const P=N({__name:"index",setup(U){const c=b([{id:1,type:"ai",content:`您好！我是您的AI维权助手 🤖
 
 我可以帮您：
 • 分析纠纷类型和维权可行性
