@@ -16,10 +16,10 @@ const successCases = ref([
 const currentCaseIndex = ref(0)
 
 const commonIssues = [
-  { icon: '🏋️', title: '健身房跑路', count: '1234' },
-  { icon: '💇', title: '美容美发', count: '856' },
-  { icon: '📚', title: '教育培训', count: '672' },
-  { icon: '🏊', title: '游泳馆', count: '423' },
+  { icon: '🏋️', title: '健身房跑路', desc: '年卡退费、私教课退款', count: '1234' },
+  { icon: '💇', title: '美容美发', desc: '充值卡退费、服务纠纷', count: '856' },
+  { icon: '📚', title: '教育培训', desc: '课程退费、机构倒闭', count: '672' },
+  { icon: '🏊', title: '游泳馆', desc: '次卡退费、会员权益', count: '423' },
 ]
 
 const processSteps = [
@@ -142,21 +142,29 @@ onMounted(() => {
       <view class="mb-3 px-2 text-base text-text-main font-semibold">
         常见纠纷类型
       </view>
-      <view class="grid grid-cols-4 gap-3">
+      <view class="space-y-3">
         <view
           v-for="issue in commonIssues"
           :key="issue.title"
-          class="flex flex-col items-center rounded-card bg-bg-card p-3 shadow-sm active:shadow"
+          class="flex items-center rounded-card bg-bg-card p-4 shadow-sm active:shadow-md"
           @click="handleCommonIssue(issue)"
         >
-          <view class="mb-2 text-2xl">
+          <view class="mr-4 h-10 w-10 flex items-center justify-center rounded-full bg-bg-page text-xl">
             {{ issue.icon }}
           </view>
-          <view class="mb-1 text-center text-xs text-text-main font-medium">
-            {{ issue.title }}
+          <view class="flex-1">
+            <view class="mb-1 text-sm text-text-main font-medium">
+              {{ issue.title }}
+            </view>
+            <view class="text-xs text-text-sub">
+              {{ issue.desc }}
+            </view>
           </view>
-          <view class="text-2xs text-text-sub">
-            {{ issue.count }}人
+          <view class="flex items-center">
+            <view class="mr-2 text-xs text-text-sub">
+              {{ issue.count }}人已维权
+            </view>
+            <view class="i-carbon-chevron-right text-text-sub" />
           </view>
         </view>
       </view>
