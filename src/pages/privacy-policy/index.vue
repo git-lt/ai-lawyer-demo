@@ -1,42 +1,88 @@
-<route lang="json5">
-{
+<script setup lang="ts">
+definePage({
   style: {
     navigationBarTitleText: '隐私政策',
+    navigationBarBackgroundColor: '#FAF9F6',
+    navigationBarTextStyle: 'black',
   },
-}
-</route>
+})
+</script>
 
 <template>
-  <view class="min-h-screen bg-white p-6">
-    <view class="mb-4 text-lg font-bold">
-      隐私政策
-    </view>
-    <view class="text-sm text-gray-600 leading-relaxed space-y-4">
-      <view>
-        欢迎您使用“退钱吧”！我们非常重视您的隐私保护和个人信息安全。本隐私政策旨在向您说明我们如何收集、使用、存储和保护您的个人信息。
+  <view class="min-h-screen bg-bg-page">
+    <scroll-view scroll-y class="h-screen">
+      <view class="px-6 py-6">
+        <view class="mb-4 text-xl text-text-main font-bold">
+          退钱吧隐私政策
+        </view>
+
+        <view class="mb-6 text-xs text-text-sub">
+          更新日期：2023年11月21日
+          <br>
+          生效日期：2023年11月21日
+        </view>
+
+        <view class="text-sm text-text-main leading-relaxed space-y-6">
+          <view>
+            <view class="mb-2 font-semibold">
+              1. 信息收集
+            </view>
+            <view class="text-text-sub">
+              我们收集您主动提供的信息，包括但不限于：手机号码、案件相关证据材料、投诉内容等。这些信息仅用于提供维权服务。
+            </view>
+          </view>
+
+          <view>
+            <view class="mb-2 font-semibold">
+              2. 信息使用
+            </view>
+            <view class="text-text-sub">
+              您的信息将用于：AI智能分析、生成法律文书、案件进度跟踪。我们承诺不会将您的个人信息用于其他商业目的。
+            </view>
+          </view>
+
+          <view>
+            <view class="mb-2 font-semibold">
+              3. 信息保护
+            </view>
+            <view class="text-text-sub">
+              我们采用行业标准的安全措施保护您的数据，包括加密存储、访问控制等技术手段。
+            </view>
+          </view>
+
+          <view>
+            <view class="mb-2 font-semibold">
+              4. 信息共享
+            </view>
+            <view class="text-text-sub">
+              除法律要求或经您明确授权外，我们不会与第三方共享您的个人信息。
+            </view>
+          </view>
+
+          <view>
+            <view class="mb-2 font-semibold">
+              5. 您的权利
+            </view>
+            <view class="text-text-sub">
+              您有权访问、更正、删除您的个人信息。如需行使这些权利，请联系我们的客服。
+            </view>
+          </view>
+        </view>
+
+        <view class="mt-8 rounded-card bg-primary-light/30 p-4">
+          <view class="text-sm text-text-main">
+            如有任何疑问，请联系我们：
+            <br>
+            邮箱：privacy@tuiqianba.com
+          </view>
+        </view>
       </view>
-      <view class="text-gray-800 font-bold">
-        1. 我们收集的信息
-      </view>
-      <view>
-        为了向您提供维权咨询、证据分析和文书生成服务，我们需要收集您的手机号码、案件描述、上传的证据文件（如合同、支付凭证）等信息。
-      </view>
-      <view class="text-gray-800 font-bold">
-        2. 信息的用途
-      </view>
-      <view>
-        您的信息仅用于为您提供法律维权服务，包括但不限于生成投诉文书、匹配投诉渠道等。未经您的授权，我们不会将您的信息用于其他商业用途。
-      </view>
-      <view class="text-gray-800 font-bold">
-        3. 信息安全
-      </view>
-      <view>
-        我们采用业界标准的安全技术和程序来保护您的个人信息，防止未经授权的访问、使用或泄露。
-      </view>
-    </view>
+    </scroll-view>
   </view>
 </template>
 
-<script setup lang="ts">
-// No logic needed for prototype
-</script>
+<style scoped>
+.space-y-6 > view + view {
+  margin-top: 24px;
+}
+</style>

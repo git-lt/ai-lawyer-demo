@@ -1,75 +1,57 @@
-<route lang="json5">
-{
+<script setup lang="ts">
+definePage({
   style: {
     navigationBarTitleText: '设置',
+    navigationBarBackgroundColor: '#FAF9F6',
+    navigationBarTextStyle: 'black',
   },
-}
-</route>
+})
 
-<template>
-  <view class="min-h-screen bg-gray-100 p-4">
-    <view class="mb-4 overflow-hidden rounded-lg bg-white">
-      <view
-        class="flex items-center justify-between border-b border-gray-100 p-4 transition active:bg-gray-50"
-        @click="goToProfile"
-      >
-        <view class="text-gray-800">
-          个人资料
-        </view>
-        <view class="i-carbon-chevron-right text-gray-400" />
-      </view>
-      <view
-        class="flex items-center justify-between border-b border-gray-100 p-4 transition active:bg-gray-50"
-        @click="goToNotificationSettings"
-      >
-        <view class="text-gray-800">
-          通知设置
-        </view>
-        <view class="i-carbon-chevron-right text-gray-400" />
-      </view>
-    </view>
+const menuGroups = [
+  {
+    title: '账号设置',
+    items: [
+      { id: 'notification', title: '通知设置', url: '/pages/notification-settings/index' },
+    ],
+  },
+  {
+    title: '关于',
+    items: [
+      { id: 'privacy', title: '隐私政策', url: '/pages/privacy-policy/index' },
+      { id: 'about', title: '关于我们', url: '/pages/about-us/index' },
+    ],
+  },
+]
 
-    <view class="mb-4 overflow-hidden rounded-lg bg-white">
-      <view
-        class="flex items-center justify-between border-b border-gray-100 p-4 transition active:bg-gray-50"
-        @click="goToPrivacyPolicy"
-      >
-        <view class="text-gray-800">
-          隐私政策
-        </view>
-        <view class="i-carbon-chevron-right text-gray-400" />
-      </view>
-      <view
-        class="flex items-center justify-between p-4 transition active:bg-gray-50"
-        @click="goToAboutUs"
-      >
-        <view class="text-gray-800">
-          关于我们
-        </view>
-        <view class="i-carbon-chevron-right text-gray-400" />
-      </view>
-    </view>
-
-    <button class="rounded-lg bg-white py-3 text-red-500 font-medium transition hover:bg-gray-50">
-      退出登录
-    </button>
-  </view>
-</template>
-
-<script setup lang="ts">
-function goToProfile() {
-  uni.navigateTo({ url: '/pages/user-profile/index' })
-}
-
-function goToNotificationSettings() {
-  uni.navigateTo({ url: '/pages/notification-settings/index' })
-}
-
-function goToPrivacyPolicy() {
-  uni.navigateTo({ url: '/pages/privacy-policy/index' })
-}
-
-function goToAboutUs() {
-  uni.navigateTo({ url: '/pages/about-us/index' })
+function goToPage(url: string) {
+  uni.navigateTo({ url })
 }
 </script>
+
+<template>
+  <view class="min-h-screen bg-bg-page p-4">
+    <view
+      v-for="(group, groupIndex) in menuGroups"
+      :key="groupIndex"
+      class="mb-4"
+    >
+      <view class="mb-2 px-2 text-sm text-text-sub">
+        {{ group.title }}
+      </view>
+      <view class="overflow-hidden rounded-card bg-bg-card shadow-sm">
+        <view
+          v-for="(item, index) in group.items"
+          :key="item.id"
+          class="flex items-center justify-between px-5 py-4 active:bg-gray-50"
+          :class="index < group.items.length - 1 ? 'border-b border-border' : ''"
+          @click="goToPage(item.url)"
+        >
+          <view class="text-sm text-text-main">
+            {{ item.title }}
+          </view>
+          <view class="i-carbon-chevron-right text-text-sub" />
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

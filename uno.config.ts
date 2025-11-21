@@ -71,7 +71,20 @@ export default defineConfig({
     },
   ],
   // 动态图标需要在这里配置，或者写在vue页面中注释掉
-  safelist: ['i-carbon-code', 'i-carbon-home', 'i-carbon-user'],
+  safelist: [
+    'i-carbon-home',
+    'i-carbon-user',
+    'i-carbon-folder',
+    'i-carbon-bot',
+    'i-carbon-send',
+    'i-carbon-microphone',
+    'i-carbon-document-add',
+    'i-carbon-upload',
+    'i-carbon-image',
+    'i-carbon-edit',
+    'i-carbon-chevron-right',
+    'i-carbon-scale',
+  ],
   rules: [
     [
       'p-safe',
@@ -85,13 +98,37 @@ export default defineConfig({
   ],
   theme: {
     colors: {
-      /** 主题色，用法如: text-primary */
-      primary: 'var(--wot-color-theme,#0957DE)',
+      // Warm Guardian Design System Colors
+      'primary': '#00B894',
+      'primary-hover': '#00A383',
+      'primary-light': '#E0F7F3',
+      'secondary': '#FF7675',
+      'secondary-hover': '#E66A69',
+      'text-main': '#2D3436',
+      'text-sub': '#636E72',
+      'text-placeholder': '#B2BEC3',
+      'bg-page': '#FAF9F6',
+      'bg-card': '#FFFFFF',
+      'border': '#DFE6E9',
+      'success': '#00B894',
+      'warning': '#FDCB6E',
+      'error': '#FF7675',
+      'info': '#74B9FF',
     },
     fontSize: {
       /** 提供更小号的字体，用法如：text-2xs */
       '2xs': ['20rpx', '28rpx'],
       '3xs': ['18rpx', '26rpx'],
+    },
+    borderRadius: {
+      card: '16px',
+      btn: '9999px',
+      input: '12px',
+    },
+    boxShadow: {
+      sm: '0 2px 4px rgba(0, 0, 0, 0.05)',
+      DEFAULT: '0 4px 12px rgba(0, 0, 0, 0.08)',
+      lg: '0 8px 24px rgba(0, 0, 0, 0.12)',
     },
   },
   // windows 系统会报错：[plugin:unocss:transformers:pre] Cannot overwrite a zero-length range - use append Left or prependRight instead.
