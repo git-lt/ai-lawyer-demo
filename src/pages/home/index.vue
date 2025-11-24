@@ -47,6 +47,10 @@ function handleCommonIssue(issue: any) {
   })
 }
 
+function goToLegalKnowledge() {
+  uni.navigateTo({ url: '/pages/legal-knowledge/detail?id=1' })
+}
+
 // Auto rotate success cases
 onMounted(() => {
   setInterval(() => {
@@ -225,7 +229,10 @@ onMounted(() => {
             <view class="text-xs text-text-sub leading-relaxed">
               经营者以预收款方式提供商品或者服务的，应当按照约定提供。未按照约定提供的，应当按照消费者的要求履行约定或者退回预付款...
             </view>
-            <view class="mt-2 text-xs text-primary">
+            <view
+              class="mt-2 cursor-pointer text-xs text-primary"
+              @click="goToLegalKnowledge"
+            >
               查看更多 →
             </view>
           </view>
